@@ -1,0 +1,93 @@
+/* Estilos Gerais */
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+h1, h2, h3 {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  padding: 8px 16px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+}
+
+button.salvar {
+  background-color: #4CAF50;
+  color: white;
+}
+
+button.exportar {
+  background-color: #008CBA;
+  color: white;
+}
+
+footer {
+  text-align: center;
+  padding: 16px;
+  background-color: #f2f2f2;
+}
+
+/* Cabeçalho */
+#cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+#cabecalho .logo {
+  width: 150px;
+  height: auto;
+}
+
+#cabecalho .titulo {
+  text-align: right;
+}
+
+#cabecalho h1 {
+  font-family: 'Arial Black';
+  color: orange;
+}
+
+/* Formulário */
+form {
+  width: 100%;
+}
+
+input[type="text"], input[type="number"], select {
+  width: 100%;
+  padding: 8px;
+  margin: 4px 0;
+  box-sizing: border-box;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
