@@ -8,76 +8,75 @@
 </head>
 <body>
 
-<div id="container">
-  <div id="cabecalho">
-    <img src="logo.png" alt="Logo IAPG" class="logo">
-    <div class="titulo">
-      <h1>FESTA DA ESFIRRA</h1>
-      <h2>IAPG - Cardoso-SP</h2>
-      <h3>Dia - 08/03/2025</h3>
+  <div id="container">
+    <div id="cabecalho">
+      <img src="logo.png" alt="IAPG Logo">
+      <div class="logo-texto">
+        <h1>FESTA DA ESFIRRA</h1>
+        <h2>IAPG - Cardoso-SP</h2>
+        <h3>Dia - 08/03/2025</h3>
+      </div>
     </div>
+
+    <form>
+      <label for="nome_comprador">Nome do Comprador:</label><br>
+      <input type="text" id="nome_comprador" name="nome_comprador" oninput="converterParaMaiusculo(this)" required><br><br>
+
+      <label for="endereco">Endereço:</label><br>
+      <input type="text" id="endereco" name="endereco" oninput="converterParaMaiusculo(this)" required><br><br>
+
+      <label for="telefone">Telefone:</label><br>
+      <input type="text" id="telefone" name="telefone" oninput="formatarTelefone(this)" required><br><br>
+
+      <label for="quantidade_kits">Quantidade de Kits:</label><br>
+      <input type="number" id="quantidade_kits" name="quantidade_kits" required><br><br>
+
+      <label for="forma_entrega">Forma de Entrega:</label><br>
+      <select id="forma_entrega" name="forma_entrega">
+        <option value="domicilio">Em domicílio</option>
+        <option value="retirada">Retirada</option>
+      </select><br><br>
+
+      <label for="vendedor">Vendedor:</label><br>
+      <select id="vendedor" name="vendedor">
+        <option value="eduardo_andrade">Eduardo Andrade</option>
+        <option value="tulio">Túlio</option>
+        <option value="edilaine">Edilaine</option>
+        <option value="pastora_vera">Pastora Vera</option>
+        <option value="alessandro">Alessandro</option>
+      </select>
+      <button type="button" onclick="adicionarVendedor()">Adicionar Vendedor</button><br><br>
+
+      <button type="button" class="salvar" onclick="salvarPedido()">Salvar Pedido</button>
+      <button type="button" class="exportar" onclick="gerarRelatorio()">Gerar Relatório para Impressão</button>
+    </form>
+
+    <hr>
+
+    <h2>Pedidos Realizados</h2>
+    <table id="pedidos">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nome do Comprador</th>
+          <th>Endereço</th>
+          <th>Telefone</th>
+          <th>Quantidade de Kits</th>
+          <th>Forma de Entrega</th>
+          <th>Vendedor</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
   </div>
 
-  <form>
-    <label for="nome_comprador">Nome do Comprador:</label><br>
-    <input type="text" id="nome_comprador" name="nome_comprador" oninput="converterParaMaiusculo(this)" required><br><br>
+  <footer>
+    © 2025 Desenvolvido por Eduardo Andrade<br>
+    Maanaim Marketing Digital e Designer Gráfico - (17) 99603-4799
+  </footer>
 
-    <label for="endereco">Endereço:</label><br>
-    <input type="text" id="endereco" name="endereco" oninput="converterParaMaiusculo(this)" required><br><br>
-
-    <label for="telefone">Telefone:</label><br>
-    <input type="text" id="telefone" name="telefone" oninput="formatarTelefone(this)" required><br><br>
-
-    <label for="quantidade_kits">Quantidade de Kits:</label><br>
-    <input type="number" id="quantidade_kits" name="quantidade_kits" required><br><br>
-
-    <label for="forma_entrega">Forma de Entrega:</label><br>
-    <select id="forma_entrega" name="forma_entrega">
-      <option value="domicilio">Em domicílio</option>
-      <option value="retirada">Retirada</option>
-    </select><br><br>
-
-    <label for="vendedor">Vendedor:</label><br>
-    <select id="vendedor" name="vendedor">
-      <option value="eduardo_andrade">Eduardo Andrade</option>
-      <option value="tulio">Túlio</option>
-      <option value="edilaine">Edilaine</option>
-      <option value="pastora_vera">Pastora Vera</option>
-      <option value="alessandro">Alessandro</option>
-    </select>
-    <button type="button" onclick="adicionarVendedor()">Adicionar Vendedor</button><br><br>
-
-    <button type="button" class="salvar" onclick="salvarPedido()">Salvar Pedido</button>
-    <button type="button" class="exportar" onclick="gerarRelatorio()">Gerar Relatório</button>
-  </form>
-
-  <hr>
-
-  <h2>Pedidos Realizados</h2>
-  <table id="pedidos">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Nome do Comprador</th>
-        <th>Endereço</th>
-        <th>Telefone</th>
-        <th>Quantidade de Kits</th>
-        <th>Forma de Entrega</th>
-        <th>Vendedor</th>
-        <th>Ações</th>
-      </tr>
-    </thead>
-    <tbody>
-    </tbody>
-  </table>
-</div>
-
-<footer>
-  © 2025 Desenvolvido por Eduardo Andrade<br>
-  Maanaim Marketing Digital e Designer Gráfico - (17) 99603-4799
-</footer>
-
-<script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
 </html>

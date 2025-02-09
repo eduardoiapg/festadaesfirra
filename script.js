@@ -1,58 +1,86 @@
-// Função para formatar o telefone
+// Máscara para o campo de telefone
 function formatarTelefone(input) {
   const numeros = input.value.replace(/\D/g, ''); // Remove caracteres não numéricos
   const formatado = numeros.replace(/^(\d{2})(\d{5})(\d{4})$/, '($1) $2-$3'); // Formata o número
   input.value = formatado;
 }
 
-// Função para converter texto para maiúsculo
+// Converter texto para maiúsculo
 function converterParaMaiusculo(input) {
   input.value = input.value.toUpperCase();
 }
 
-// Função para adicionar o vendedor ao pedido (simulação)
-function adicionarVendedor() {
-  const vendedor = document.getElementById('vendedor').value;
-  alert("Vendedor adicionado: " + vendedor);
-}
-
-// Função para salvar o pedido (simulação)
+// Função para salvar o pedido
+let pedidos = [];
 function salvarPedido() {
-  const nomeComprador = document.getElementById('nome_comprador').value;
-  const endereco = document.getElementById('endereco').value;
-  const telefone = document.getElementById('telefone').value;
-  const quantidadeKits = document.getElementById('quantidade_kits').value;
-  const formaEntrega = document.getElementById('forma_entrega').value;
-  const vendedor = document.getElementById('vendedor').value;
+  const nomeComprador = document.getElementById("nome_comprador").value;
+  const endereco = document.getElementById("endereco").value;
+  const telefone = document.getElementById("telefone").value;
+  const quantidadeKits = document.getElementById("quantidade_kits").value;
+  const formaEntrega = document.getElementById("forma_entrega").value;
+  const vendedor = document.getElementById("vendedor").value;
 
-  // Criar linha da tabela de pedidos
-  const tabela = document.getElementById('pedidos').getElementsByTagName('tbody')[0];
-  const novaLinha = tabela.insertRow();
+  const novoPedido = {
+    nomeComprador,
+    endereco,
+    telefone,
+    quantidadeKits,
+    formaEntrega,
+    vendedor
+  };
 
-  // Adiciona os dados nas células da linha
-  novaLinha.insertCell(0).textContent = tabela.rows.length; // Número do pedido
-  novaLinha.insertCell(1).textContent = nomeComprador;
-  novaLinha.insertCell(2).textContent = endereco;
-  novaLinha.insertCell(3).textContent = telefone;
-  novaLinha.insertCell(4).textContent = quantidadeKits;
-  novaLinha.insertCell(5).textContent = formaEntrega;
-  novaLinha.insertCell(6).textContent = vendedor;
-
-  // Adiciona botão de excluir pedido
-  const acaoCell = novaLinha.insertCell(7);
-  acaoCell.innerHTML = `<button onclick="excluirPedido(this)">Excluir</button>`;
-  
-  // Limpar os campos do formulário após salvar
-  document.querySelector('form').reset();
+  pedidos.push(novoPedido);
+  atualizarTabela();
+  limparFormulario();
 }
 
-// Função para excluir pedido da tabela
-function excluirPedido(button) {
-  const row = button.closest('tr');
-  row.remove();
+// Atualizar a tabela de pedidos
+function atualizarTabela() {
+  const tabelaPedidos = document.getElementById("pedidos").getElementsByTagName('tbody')[0];
+  tabelaPedidos.innerHTML = ''; // Limpa a tabela antes de adicionar os novos pedidos
+
+  pedidos.forEach((pedido, index) => {
+    const row = tabelaPedidos.insertRow();
+    row.innerHTML = `
+      <td>${index + 1}</td>
+      <td>${pedido.nomeComprador}</td>
+      <td>${pedido.endereco}</td>
+      <td>${pedido.telefone}</td>
+      <td>${pedido.quantidadeKits}</td>
+      <td>${pedido.formaEntrega}</td>
+      <td>${pedido.vendedor}</td>
+      <td><button onclick="excluirPedido(${index})">Excluir</button></td>
+    `;
+  });
 }
 
-// Função para gerar o relatório de pedidos
+// Limpar formulário
+function limparFormulario() {
+  document.getElementById("nome_comprador").value = '';
+  document.getElementById("endereco").value = '';
+  document.getElementById("telefone").value = '';
+  document.getElementById("quantidade_kits").value = '';
+  document.getElementById("forma_entrega").value = 'domicilio';
+  document.getElementById("vendedor").value = 'eduardo_andrade';
+}
+
+// Função para excluir pedido
+function excluirPedido(index) {
+  pedidos.splice(index, 1);
+  atualizarTabela();
+}
+
+// Função para gerar relatório (simulação para impressão)
 function gerarRelatorio() {
-  alert('Gerando relatório de pedidos para impressão...');
+  let relatorio = "Relatório de Pedidos:\n\n";
+  pedidos.forEach((pedido, index) => {
+    relatorio += `Pedido #${index + 1}:\n`;
+    relatorio += `Nome: ${pedido.nomeComprador}\n`;
+    relatorio += `Endereço: ${pedido.endereco}\n`;
+    relatorio += `Telefone: ${pedido.telefone}\n`;
+    relatorio += `Quantidade de Kits: ${pedido.quantidadeKits}\n`;
+    relatorio += `Forma de Entrega: ${pedido.formaEntrega}\n`;
+    relatorio += `Vendedor: ${pedido.vendedor}\n\n`;
+  });
+  alert(relatorio); // Exibe o relatório em uma janela de alerta
 }

@@ -1,22 +1,42 @@
-/* Estilos Gerais */
 body {
   font-family: sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f9f9f9;
 }
 
 #container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
 }
 
-h1, h2, h3 {
-  margin: 0;
-  padding: 0;
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 8px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+input[type="text"], input[type="number"], select {
+  width: 100%;
+  padding: 8px;
+  margin: 4px 0;
+  box-sizing: border-box;
+}
+
+form {
+  width: 100%;
 }
 
 button {
@@ -42,52 +62,86 @@ footer {
   background-color: #f2f2f2;
 }
 
-/* Cabeçalho */
 #cabecalho {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
   margin-bottom: 20px;
 }
 
-#cabecalho .logo {
-  width: 150px;
-  height: auto;
-}
-
-#cabecalho .titulo {
-  text-align: right;
+#cabecalho img {
+  max-width: 150px;
 }
 
 #cabecalho h1 {
   font-family: 'Arial Black';
   color: orange;
+  font-size: 24px;
+  margin: 0;
 }
 
-/* Formulário */
-form {
-  width: 100%;
+#cabecalho h2, #cabecalho h3 {
+  font-size: 16px;
+  color: #555;
 }
 
-input[type="text"], input[type="number"], select {
-  width: 100%;
-  padding: 8px;
-  margin: 4px 0;
-  box-sizing: border-box;
+#cabecalho .logo-texto {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
+@media (max-width: 768px) {
+  #cabecalho {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  #cabecalho img {
+    margin-bottom: 10px;
+  }
+
+  #cabecalho h1 {
+    font-size: 20px;
+  }
+
+  #cabecalho h2, #cabecalho h3 {
+    font-size: 14px;
+  }
+
+  table, form {
+    width: 100%;
+    padding: 10px;
+  }
+
+  th, td {
+    font-size: 14px;
+  }
+
+  button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+  }
 }
 
-th, td {
-  padding: 8px;
-  border: 1px solid #ddd;
-  text-align: left;
-}
+@media (max-width: 480px) {
+  #cabecalho h1 {
+    font-size: 18px;
+  }
 
-th {
-  background-color: #f2f2f2;
+  #cabecalho h2, #cabecalho h3 {
+    font-size: 12px;
+  }
+
+  button {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  footer {
+    font-size: 12px;
+  }
 }
