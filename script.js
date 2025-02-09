@@ -1,17 +1,6 @@
-// Máscara para o campo de telefone
-function formatarTelefone(input) {
-  const numeros = input.value.replace(/\D/g, ''); // Remove caracteres não numéricos
-  const formatado = numeros.replace(/^(\d{2})(\d{5})(\d{4})$/, '($1) $2-$3'); // Formata o número
-  input.value = formatado;
-}
-
-// Converter texto para maiúsculo
-function converterParaMaiusculo(input) {
-  input.value = input.value.toUpperCase();
-}
-
 // Função para salvar o pedido
-let pedidos = [];
+let pedidos = JSON.parse(localStorage.getItem('pedidos')) || []; // Carregar pedidos do localStorage (se existirem)
+
 function salvarPedido() {
   const nomeComprador = document.getElementById("nome_comprador").value;
   const endereco = document.getElementById("endereco").value;
@@ -30,6 +19,10 @@ function salvarPedido() {
   };
 
   pedidos.push(novoPedido);
+
+  // Salvar pedidos no localStorage
+  localStorage.setItem('pedidos', JSON.stringify(pedidos));
+
   atualizarTabela();
   limparFormulario();
 }
@@ -67,6 +60,10 @@ function limparFormulario() {
 // Função para excluir pedido
 function excluirPedido(index) {
   pedidos.splice(index, 1);
+
+  // Atualizar localStorage após excluir o pedido
+  localStorage.setItem('pedidos', JSON.stringify(pedidos));
+
   atualizarTabela();
 }
 
@@ -84,3 +81,8 @@ function gerarRelatorio() {
   });
   alert(relatorio); // Exibe o relatório em uma janela de alerta
 }
+
+// Carregar os pedidos assim que a página for carregada
+document.addEventListener('DOMContentLoaded', function () {
+  atualizarTabela();
+});
