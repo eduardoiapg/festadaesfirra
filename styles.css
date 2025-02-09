@@ -1,147 +1,77 @@
 body {
-  font-family: sans-serif;
-  margin: 0;
-  padding: 0;
+    font-family: sans-serif;
 }
 
 #container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 90%;
-  margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
 }
 
 table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
 }
 
 th, td {
-  padding: 8px;
-  border: 1px solid #ddd;
-  text-align: left;
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
 }
 
 th {
-  background-color: #f2f2f2;
+    background-color: #f2f2f2;
 }
 
 input[type="text"], input[type="number"], select {
-  width: 100%;
-  padding: 8px;
-  margin: 4px 0;
-  box-sizing: border-box;
+    width: 100%;
+    padding: 8px;
+    margin: 4px 0;
+    box-sizing: border-box;
 }
 
 form {
-  width: 100%;
+    width: 100%;
 }
 
 button {
-  padding: 8px 16px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
+    padding: 8px 16px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
 }
 
 button.salvar {
-  background-color: #4CAF50;
-  color: white;
+    background-color: #4CAF50;
+    color: white;
 }
 
 button.exportar {
-  background-color: #008CBA;
-  color: white;
+    background-color: #008CBA;
+    color: white;
 }
 
 footer {
-  text-align: center;
-  padding: 16px;
-  background-color: #f2f2f2;
+    text-align: center;
+    padding: 16px;
+    background-color: #f2f2f2;
 }
 
 #cabecalho {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
 #cabecalho img {
-  max-width: 150px;
+    max-width: 100px;
+    margin-right: 20px;
 }
 
 #cabecalho h1 {
-  font-family: 'Arial Black';
-  color: orange;
-  font-size: 24px;
-  margin: 0;
-}
-
-#cabecalho h2, #cabecalho h3 {
-  font-size: 16px;
-  color: #555;
-}
-
-#cabecalho .logo-texto {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-@media (max-width: 768px) {
-  #cabecalho {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  #cabecalho img {
-    margin-bottom: 10px;
-  }
-
-  #cabecalho h1 {
-    font-size: 20px;
-  }
-
-  #cabecalho h2, #cabecalho h3 {
-    font-size: 14px;
-  }
-
-  table, form {
-    width: 100%;
-    padding: 10px;
-  }
-
-  th, td {
-    font-size: 14px;
-  }
-
-  button {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-  }
-}
-
-@media (max-width: 480px) {
-  #cabecalho h1 {
-    font-size: 18px;
-  }
-
-  #cabecalho h2, #cabecalho h3 {
-    font-size: 12px;
-  }
-
-  button {
-    padding: 12px;
-    font-size: 14px;
-  }
-
-  footer {
-    font-size: 12px;
-  }
+    font-family: 'Arial Black';
+    color: orange;
 }
