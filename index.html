@@ -1,81 +1,78 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Festa da Esfirra</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 </head>
 <body>
+    <header>
+        <img src="logo.png" alt="Logo da Igreja">
+        <h1>Festa da Esfirra</h1>
+        <p>Realização: IAPG - Cardoso/SP</p>
+    </header>
+    <main>
+        <section id="anotacao-pedido">
+            <h2>ANOTAÇÃO DE PEDIDO</h2>
+            <form id="pedido-form">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required style="text-transform: uppercase;">
 
-    <div id="container">
-        <div id="cabecalho">
-            <img src="logo.png" alt="IAPG Logo" id="logo">
-            <div id="texto-cabecalho">
-                <h1>FESTA DA ESFIRRA</h1>
-                <h2>IAPG - Cardoso-SP</h2>
-                <h3>Dia - 08/03/2025</h3>
-            </div>
-        </div>
+                <label for="endereco">Endereço:</label>
+                <input type="text" id="endereco" name="endereco" required style="text-transform: uppercase;">
+                <small>Endereço completo para entrega, no caso de retirada não informar o endereço apenas digite RETIRADA</small>
 
-        <form>
-            <label for="nome_comprador">Nome do Comprador:</label><br>
-            <input type="text" id="nome_comprador" name="nome_comprador" required><br><br>
+                <label for="telefone">Telefone:</label>
+                <input type="tel" id="telefone" name="telefone" required pattern="\(\d{2}\) \d{5}-\d{4}">
 
-            <label for="endereco">Endereço:</label><br>
-            <input type="text" id="endereco" name="endereco" required><br><br>
+                <label for="quantidade">Quantidade de kits:</label>
+                <input type="number" id="quantidade" name="quantidade" required>
 
-            <label for="telefone">Telefone:</label><br>
-            <input type="text" id="telefone" name="telefone" required><br><br>
+                <label for="vendedor">Vendedor:</label>
+                <select id="vendedor" name="vendedor" required>
+                    <option value="Eduardo Andrade">Eduardo Andrade</option>
+                    <option value="Edilaine">Edilaine</option>
+                    <option value="Pastora Vera">Pastora Vera</option>
+                </select>
+                <button type="button" id="add-vendedor">Adicionar Vendedor</button>
 
-            <label for="quantidade_kits">Quantidade de Kits:</label><br>
-            <input type="number" id="quantidade_kits" name="quantidade_kits" required><br><br>
+                <button type="button" id="anotar-pedido">ANOTAR PEDIDO</button>
+            </form>
+        </section>
 
-            <label for="forma_entrega">Forma de Entrega:</label><br>
-            <select id="forma_entrega" name="forma_entrega">
-                <option value="domicilio">Em domicílio</option>
-                <option value="retirada">Retirada</option>
-            </select><br><br>
+        <section id="pedido-avulso">
+            <h2>PEDIDO AVULSO</h2>
+            <form id="avulso-form">
+                <label for="nome-avulso">Nome:</label>
+                <input type="text" id="nome-avulso" name="nome-avulso" required style="text-transform: uppercase;">
 
-            <label for="vendedor">Vendedor:</label><br>
-            <select id="vendedor" name="vendedor">
-                <option value="eduardo_andrade">Eduardo Andrade</option>
-                <option value="tulio">Túlio</option>
-                <option value="edilaine">Edilaine</option>
-                <option value="pastora_vera">Pastora Vera</option>
-                <option value="alessandro">Alessandro</option>
-            </select><br><br>
+                <label for="quantidade-avulso">Quantidade de Kits:</label>
+                <input type="number" id="quantidade-avulso" name="quantidade-avulso" required>
 
-            <button type="button" class="salvar" onclick="salvarPedido()">Salvar Pedido</button>
-            <button type="button" class="exportar" onclick="gerarRelatorio()">Gerar Relatório</button>
-        </form>
+                <button type="button" id="anotar-avulso">ANOTAR PEDIDO AVULSO</button>
+            </form>
+        </section>
 
-        <hr>
+        <section id="relatorios">
+            <button id="gerar-relatorio">Gerar Relatório de Pedidos</button>
+            <button id="gerar-tickets">Gerar Tickets</button>
+        </section>
 
-        <h2>Pedidos Realizados</h2>
-        <table id="pedidos">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Nome do Comprador</th>
-                    <th>Endereço</th>
-                    <th>Telefone</th>
-                    <th>Quantidade de Kits</th>
-                    <th>Forma de Entrega</th>
-                    <th>Vendedor</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-    </div>
+        <section id="total-kits">
+            <h2>TOTAL DE KITS VENDIDOS: <span id="total-kits-vendidos">0</span></h2>
+        </section>
 
+        <section id="pedidos-realizados">
+            <h2>PEDIDOS REALIZADOS</h2>
+            <ul id="lista-pedidos"></ul>
+        </section>
+    </main>
     <footer>
-        © 2025 Desenvolvido por Eduardo Andrade<br>
-        Maanaim Marketing Digital e Designer Gráfico - (17) 99603-4799
+        <p>&copy; 2025 Desenvolvido por Eduardo Andrade</p>
+        <p>Maanaim Marketing Digital e Designer Gráfico - (17) 99603-4799</p>
     </footer>
-
-    <script src="script.js"></script>
+    <script src="scripts.js"></script>
 </body>
 </html>
