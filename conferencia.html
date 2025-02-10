@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Conferência - Festa da Esfirra</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header text-center mb-4">
+            <img src="logo-igreja.png" alt="Logo da Igreja" width="100">
+            <h1>Página de Conferência</h1>
+            <p>Realização: IAPG - Cardoso/SP</p>
+        </div>
+        <div class="pedidos-realizados mt-4">
+            <h2>PEDIDOS ORDENADOS POR NOME</h2>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Endereço</th>
+                        <th>Telefone</th>
+                        <th>Quantidade</th>
+                        <th>Vendedor</th>
+                    </tr>
+                </thead>
+                <tbody id="conferencia-table">
+                    <!-- Pedidos serão inseridos aqui -->
+                </tbody>
+            </table>
+        </div>
+        <div class="footer text-center mt-4">
+            <p>© 2025 Desenvolvido por Eduardo Andrade</p>
+            <p>Maanaim Marketing Digital e Designer Gráfico - (17) 99603-4799</p>
+        </div>
+    </div>
+    <script src="conferencia.js"></script>
+</body>
+</html>
