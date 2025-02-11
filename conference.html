@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conferência de Pedidos - Festa da Esfirra</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="logo-igreja.png" alt="Logo da Igreja">
+        <h1>Conferência de Pedidos - Festa da Esfirra</h1>
+        <p>Realização: IAPG - Cardoso/SP</p>
+    </header>
+
+    <main>
+        <section id="conference-section">
+            <h2>Pedidos Realizados</h2>
+            <div id="orders-list"></div>
+            <p>Total de Kits Vendidos: <span id="total-kits">0</span></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Desenvolvido por Eduardo Andrade</p>
+        <p>Maanaim Marketing Digital e Designer Gráfico - (17) 99603-4799</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const ordersList = document.getElementById('orders-list');
+            const totalKitsElement = document.getElementById('total-kits');
+
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            const totalKits = JSON.parse(localStorage.getItem('totalKits')) || 0;
+
+            orders.sort((a, b) => a.name.localeCompare(b.name)).forEach(order => {
+                const orderElement = document.createElement('div');
+                orderElement.innerHTML = `
+                    <strong>Nome:</strong> ${order.name}<br>
+                    <strong>Endereço:</strong> ${order.address}<br>
+                    <strong>Telefone:</strong> ${order.phone}<br>
+                    <strong>Quantidade de Kits:</strong> ${order.quantity}<br>
+                    <strong>Vendedor:</strong> ${order.seller}<br>
+                    <label>PAGO <input type="checkbox"></label>
+                    <label>ENTREGUE <input type="checkbox"></label>
+                `;
+                ordersList.appendChild(orderElement);
+            });
+
+            totalKitsElement.textContent = totalKits;
+        });
+    </script>
+</body>
+</html>
